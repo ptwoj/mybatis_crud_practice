@@ -1,21 +1,23 @@
 package com.crud.board.dto;
 
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.sql.Timestamp;
 
 @Getter
+@ToString
 public class BoardDto {
-    private Integer id;
+    private Long id;
+    private String userName;
     private String title;
     private String category;
     private String content;
-    private String userName;
     private Timestamp crateAt;
 
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
