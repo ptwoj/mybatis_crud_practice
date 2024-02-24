@@ -23,6 +23,9 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Thymeleaf를 추가하면 Spring Boot가 Thymeleaf를 사용하여 뷰를 찾을 수 있도록 해주는 뷰 리졸버가 자동으로 설정
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
