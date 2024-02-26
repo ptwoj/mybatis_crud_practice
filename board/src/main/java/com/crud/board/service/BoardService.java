@@ -5,6 +5,8 @@ import com.crud.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -12,5 +14,9 @@ public class BoardService {
 
     public void save(BoardDto boardDto){
         boardRepository.save(boardDto);
+    }
+
+    public List<BoardDto> findAll() {
+        return boardRepository.findAll();
     }
 }
