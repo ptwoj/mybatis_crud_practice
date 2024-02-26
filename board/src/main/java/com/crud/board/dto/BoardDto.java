@@ -3,7 +3,10 @@ package com.crud.board.dto;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @ToString
@@ -15,11 +18,20 @@ public class BoardDto {
     private String category;
     private String content;
     private int boardHits;
-    private Timestamp crateAt;
-
+    private String createdAt;
+    private int fileAttached;
+    private List<MultipartFile> boardFile;
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setBoardPass(String boardPass) {
+        this.boardPass = boardPass;
     }
 
     public void setTitle(String title) {
@@ -34,20 +46,19 @@ public class BoardDto {
         this.content = content;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setCrateAt(Timestamp crateAt) {
-        this.crateAt = crateAt;
-    }
-
     public void setBoardHits(int boardHits) {
         this.boardHits = boardHits;
     }
 
-    public void setBoardPass(String boardPass) {
-        this.boardPass = boardPass;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
+    public void setFileAttached(int fileAttached) {
+        this.fileAttached = fileAttached;
+    }
+
+    public void setBoardFile(List<MultipartFile> boardFile) {
+        this.boardFile = boardFile;
+    }
 }
