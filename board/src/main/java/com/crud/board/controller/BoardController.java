@@ -5,6 +5,7 @@ import com.crud.board.repository.BoardRepository;
 import com.crud.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,6 +21,12 @@ public class BoardController {
     @PostMapping("/save")
     public String save(BoardDto boardDto) {
         System.out.println("boardDto = " + boardDto);
+        boardService.save(boardDto);
         return "index";
+    }
+
+    @GetMapping("/list")
+    public String findAll(Model model) {
+
     }
 }

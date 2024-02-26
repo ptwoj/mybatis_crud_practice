@@ -3,7 +3,6 @@ package com.crud.board.dto;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.sql.Timestamp;
 
 @Getter
@@ -11,9 +10,11 @@ import java.sql.Timestamp;
 public class BoardDto {
     private Long id;
     private String userName;
+    private String boardPass;
     private String title;
     private String category;
     private String content;
+    private int boardHits;
     private Timestamp crateAt;
 
 
@@ -40,4 +41,13 @@ public class BoardDto {
     public void setCrateAt(Timestamp crateAt) {
         this.crateAt = crateAt;
     }
+
+    public void setBoardHits(int boardHits) {
+        this.boardHits = boardHits;
+    }
+
+    public void setBoardPass(String boardPass) {
+        this.boardPass = boardPass;
+    }
+
 }
