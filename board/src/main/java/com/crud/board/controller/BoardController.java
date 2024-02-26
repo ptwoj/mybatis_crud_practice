@@ -25,7 +25,7 @@ public class BoardController {
         return "redirect:/list";
     }
 
-    @PostMapping("/update/{id")
+    @PostMapping("/update/{id}")
     public String update(BoardDto boardDto, Model model) {
         boardService.update(boardDto);
         BoardDto dto = boardService.findById(boardDto.getId());
