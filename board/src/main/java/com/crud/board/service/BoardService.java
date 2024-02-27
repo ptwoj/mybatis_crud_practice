@@ -43,12 +43,10 @@ public class BoardService {
             boardFileDto.setStoredFileName(storedFileName);
             boardFileDto.setBoardId(savedBoard.getId());
             // 파일 저장을 폴더에 파일 저장 처리
-            String savePath = "C://Users/kauze/Desktop" + storedFileName;
+            String savePath = "C://Users/kauze/Desktop/" + storedFileName;
             boardFile.transferTo(new File(savePath));
             // board_file_table 저장 처리\
             boardRepository.saveFile(boardFileDto);
-
-
         }
     }
 

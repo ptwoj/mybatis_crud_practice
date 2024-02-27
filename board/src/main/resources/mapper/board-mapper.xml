@@ -19,7 +19,7 @@
     </update>
 
     <select id = "findById" parameterType = "Long" resultType = "board">
-        SELECT id, title, userName, boardPass, content, boardHits, date_format(createdAt, "%Y-%m-%d %H:%i:%s") as createdAt
+        SELECT id, title, userName, boardPass, content, boardHits, date_format(createdAt, "%Y-%m-%d %H:%i:%s") as createdAt, fileAttached
         FROM board_table
         WHERE id = #{id}
     </select>
@@ -40,8 +40,6 @@
         INSERT INTO board_file_table(originalFileName, storedFileName, boardId)
         VALUES (#{originalFileName}, #{storedFileName}, #{boardId})
     </insert>
-
-
 
     <select id = "findFile" parameterType = "Long" resultType= "boardFile">
         SELECT *
