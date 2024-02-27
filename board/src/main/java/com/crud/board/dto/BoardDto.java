@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -19,8 +20,11 @@ public class BoardDto {
     private String content;
     private int boardHits;
     private String createdAt;
+    
+    // 게시글 파일 첨부 파일 유무 확인 필드
     private int fileAttached;
-    private List<MultipartFile> boardFile;
+    // 게시글 작성 할 때 파일을 자체를 담기위한 필드
+    private MultipartFile boardFile;
 
     public void setId(Long id) {
         this.id = id;
@@ -58,7 +62,7 @@ public class BoardDto {
         this.fileAttached = fileAttached;
     }
 
-    public void setBoardFile(List<MultipartFile> boardFile) {
+    public void setBoardFile(MultipartFile boardFile) {
         this.boardFile = boardFile;
     }
 }

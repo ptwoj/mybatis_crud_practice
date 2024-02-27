@@ -1,6 +1,7 @@
 package com.crud.board.controller;
 
 import com.crud.board.dto.BoardDto;
+import com.crud.board.dto.BoardFileDto;
 import com.crud.board.repository.BoardRepository;
 import com.crud.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -19,7 +21,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @PostMapping("/save")
-    public String save(BoardDto boardDto) {
+    public String save(BoardDto boardDto) throws IOException {
         System.out.println("boardDto = " + boardDto);
         boardService.save(boardDto);
         return "redirect:/list";
@@ -55,6 +57,10 @@ public class BoardController {
         BoardDto boardDto = boardService.findById(id);
         model.addAttribute("board", boardDto);
         System.out.println("boardDto = " + boardDto);
+        if (boardDto.getFileAttached() == 1){
+            BoardFileDto boardFileDto = boardService.findFile(id);
+            model.addAttribute("boardFile", boardFileDto);
+        }
         return "detail";
     }
 

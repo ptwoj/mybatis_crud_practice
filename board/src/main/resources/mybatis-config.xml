@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.crud.board.dto.BoardDto" alias="board"/>
-<!--        <typeAlias type="com.codingrecipe.board.dto.BoardFileDTO" alias="boardFile"></typeAlias>-->
+        <typeAlias type = "com.crud.board.dto.BoardDto" alias = "board"></typeAlias>
+        <typeAlias type = "com.crud.board.dto.BoardFileDto" alias="boardFile"></typeAlias>
     </typeAliases>
 </configuration>
