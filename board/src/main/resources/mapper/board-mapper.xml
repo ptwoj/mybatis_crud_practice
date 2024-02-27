@@ -36,7 +36,7 @@
         WHERE id = #{id}
     </delete>
 
-    <insert id="saveFile" parameterType="boardFile">
+    <insert id = "saveFile" parameterType =  "boardFile">
         INSERT INTO board_file_table(originalFileName, storedFileName, boardId)
         VALUES (#{originalFileName}, #{storedFileName}, #{boardId})
     </insert>

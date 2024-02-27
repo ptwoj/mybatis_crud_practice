@@ -38,7 +38,7 @@ public class BoardRepository {
     }
 
     public void saveFile(BoardFileDto boardFileDto) {
-        sql.insert("Board.saveFile" + boardFileDto);
+        sql.insert("Board.saveFile", boardFileDto);
     }
 
     public BoardFileDto findFile(Long id) {
