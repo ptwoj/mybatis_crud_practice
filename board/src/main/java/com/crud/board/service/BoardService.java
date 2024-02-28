@@ -73,4 +73,13 @@ public class BoardService {
     public BoardFileDto findFile(Long id) {
         return boardRepository.findFile(id);
     }
+
+    public List<BoardDto> pagingList(int page) {
+        int pageLimit = 3;
+        /*
+
+         */
+        int pageStart = (page - 1) * pageLimit;
+        return null;
+    }
 }

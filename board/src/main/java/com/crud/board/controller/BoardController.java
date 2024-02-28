@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.IOException;
@@ -76,4 +77,15 @@ public class BoardController {
         boardService.delete(id);
         return "redirect:/list";
     }
+
+    @GetMapping("/paging")
+    public String paging(Model model,
+                         @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+
+        List<BoardDto> pageingList = boardService.pagingList(page);
+        return "index";
+
+
+    }
+
 }

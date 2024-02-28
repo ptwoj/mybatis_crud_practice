@@ -12,6 +12,7 @@
             padding: 10px;
         }
     </style>
+</head>
 <body>
 <a href="/save">글쓰기</a>
 <table>
@@ -27,11 +28,93 @@
         <td>
             <a th:text="${board.title}" th:href="@{|/${board.id}|}"></a>
         </td>
-<!--        <td th:text="${board.title}"></td>-->
         <td th:text="${board.userName}"></td>
         <td th:text="${board.createdAt}"></td>
         <td th:text="${board.boardHits}"></td>
     </tr>
 </table>
+
+<div id="pagination">
+    <!-- 페이지 번호는 여기에 동적으로 추가될 것입니다 -->
+    <a href="#" class="prev-link" onclick="prevPage()">Previous</a>
+    <a href="#" class="next-link" onclick="nextPage()">Next</a>
+</div>
+
+<script>
+    var currentPage = 1; // 현재 페이지 초기화
+    var totalPages = 10; // 전체 페이지 수 초기화
+
+    // 페이지 이동 함수
+    function changePage(page) {
+        // 페이지 이동 로직 작성
+        // 예를 들어, 페이지 번호를 서버에 전송하고 해당 페이지에 대한 데이터를 가져오는 등의 작업 수행
+        console.log('Go to page ' + page);
+        currentPage = page; // 현재 페이지 업데이트
+        updatePagination(); // 페이징 업데이트
+    }
+
+    // 이전 페이지로 이동 함수
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            changePage(currentPage);
+        }
+    }
+
+    // 다음 페이지로 이동 함수
+    function nextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            changePage(currentPage);
+        }
+    }
+
+    // 페이징 업데이트 함수
+    function updatePagination() {
+        var paginationDiv = document.getElementById("pagination");
+        paginationDiv.innerHTML = ""; // 기존 페이지 번호 초기화
+
+        // 이전 페이지 링크 추가
+        var prevLink = document.createElement("a");
+        prevLink.href = "#";
+        prevLink.classList.add("prev-link");
+        prevLink.textContent = "Previous";
+        prevLink.onclick = function () {
+            prevPage();
+        };
+        paginationDiv.appendChild(prevLink);
+
+        // 페이지 번호 링크 추가
+        for (var i = 1; i <= totalPages; i++) {
+            var pageLink = document.createElement("a");
+            pageLink.href = "#";
+            pageLink.classList.add("page-link");
+            pageLink.textContent = i;
+            if (i === currentPage) {
+                pageLink.classList.add("current-page");
+            }
+            pageLink.onclick = (function (page) {
+                return function () {
+                    changePage(page);
+                };
+            })(i);
+            paginationDiv.appendChild(pageLink);
+        }
+
+        // 다음 페이지 링크 추가
+        var nextLink = document.createElement("a");
+        nextLink.href = "#";
+        nextLink.classList.add("next-link");
+        nextLink.textContent = "Next";
+        nextLink.onclick = function () {
+            nextPage();
+        };
+        paginationDiv.appendChild(nextLink);
+    }
+
+    // 초기 페이지 로딩시 페이징 업데이트
+    updatePagination();
+</script>
+
 </body>
 </html>
